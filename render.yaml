@@ -1,0 +1,14 @@
+# Render Blueprint: deploys this folder as a free static site.
+services:
+  - type: web
+    name: brunch-quest
+    runtime: static
+    buildCommand: echo "No build step needed"
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow
+      - path: /media/*
+        name: Cache-Control
+        value: public, max-age=604800
